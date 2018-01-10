@@ -1,0 +1,21 @@
+{
+  "name": "thoughtbubble_accordian",
+  "version": "1.0.0",
+  "description": "Accordian example.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/colineatherton/thoughtbubble_accordian"
+  },
+  "keywords": [],
+  "author": "Colin Eatherton",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "3.3.6",
+    "jquery": "3.2.1",
+    "font-awesome": "4.7.0"
+  }
+}
