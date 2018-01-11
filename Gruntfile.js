@@ -40,6 +40,12 @@ module.exports = function(grunt) {
           {
             src: 'node_modules/font-awesome/css/font-awesome.min.css',
             dest: 'dist/vendor/font-awesome/css/font-awesome.min.css'
+          },
+          {
+            expand: 'true',
+            cwd: 'node_modules/font-awesome/fonts/',
+            src: '**',
+            dest: 'dist/vendor/font-awesome/fonts'
           }
         ]
       }
