@@ -46,6 +46,12 @@ module.exports = function(grunt) {
             cwd: 'node_modules/font-awesome/fonts/',
             src: '**',
             dest: 'dist/vendor/font-awesome/fonts'
+          },
+          {
+            expand: 'true',
+            cwd: 'node_modules/jquery-validation/dist',
+            src: '**',
+            dest: 'dist/vendor/jquery-validation/dist'
           }
         ]
       }
