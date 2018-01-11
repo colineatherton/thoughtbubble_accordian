@@ -8,7 +8,11 @@ function accordion() {
     var targetContentID = $(this).attr("data-target-content-id");
     var $targetContentElement = $("#" + targetContentID);
 
-    $(".accordion__bar__content").hide();
+    $(".accordion__bar__content").css({
+      "max-height": "0px"
+    });
+
+    $(".accordion__bar__content").fadeOut("slow")
 
     $accordionBars.find(".accordion__bar__inner")
       .removeClass("accordion__bar__inner--active");
@@ -16,12 +20,13 @@ function accordion() {
     $accordionBars.find(".accordion__bar__inner__icon")
       .removeClass("accordion__bar__inner__icon--active");
 
-    $targetContentElement.find(".js-content").html("");
-
     if (targetContentID === openContentID) {
       openContentID = undefined;
     } else {
       openContentID = targetContentID;
+
+      var $loadingContent = $targetContentElement.find(".js-contentLoading");
+      var $textContent = $targetContentElement.find(".js-content");
 
       $(this).find(".accordion__bar__inner")
         .addClass("accordion__bar__inner--active");
@@ -31,6 +36,11 @@ function accordion() {
 
       var url = "https://baconipsum.com/api/?type=all-meat&paras=3&start-with-lorem=1&format=html";
 
+      $targetContentElement.css({
+        "max-height": "50px",
+        "transition": "max-height 1.5s ease-in"
+      });
+
       $targetContentElement.show()
         .find(".js-contentLoading")
         .show();
@@ -38,8 +48,12 @@ function accordion() {
       $targetContentElement.find(".js-content")
         .hide()
         .load(url, function(){
-          $(".js-contentLoading").fadeOut("slow");
-          $(".js-content").delay("slow").fadeIn("slow");
+          $loadingContent.fadeOut("slow");
+          $targetContentElement.css({
+            "max-height": "500px",
+            "transition": "max-height 1.5s ease-in"
+          });
+          $textContent.delay("slow").fadeIn("slow");
         });
     }
 
