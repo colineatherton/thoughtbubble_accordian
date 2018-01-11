@@ -16,8 +16,11 @@ function accordion() {
     $accordionBars.find(".accordion__bar__inner__icon")
       .removeClass("accordion__bar__inner__icon--active");
 
-    if (targetContentID !== openContentID) {
+    $targetContentElement.find(".js-content").html("");
 
+    if (targetContentID === openContentID) {
+      openContentID = undefined;
+    } else {
       openContentID = targetContentID;
 
       $(this).find(".accordion__bar__inner")
@@ -26,7 +29,18 @@ function accordion() {
       $(this).find(".accordion__bar__inner__icon")
         .addClass("accordion__bar__inner__icon--active");
 
-      $targetContentElement.show();
+      var url = "https://baconipsum.com/api/?type=all-meat&paras=3&start-with-lorem=1&format=html";
+
+      $targetContentElement.show()
+        .find(".js-contentLoading")
+        .show();
+
+      $targetContentElement.find(".js-content")
+        .hide()
+        .load(url, function(){
+          $(".js-contentLoading").fadeOut("slow");
+          $(".js-content").delay("slow").fadeIn("slow");
+        });
     }
 
   });
