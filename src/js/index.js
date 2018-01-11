@@ -14,8 +14,7 @@ function accordion() {
 
     $(".accordion__bar__content").fadeOut("slow")
 
-    $accordionBars.find(".accordion__bar__inner")
-      .removeClass("accordion__bar__inner--active");
+    $accordionBars.removeClass("accordion__bar__inner--active");
 
     $accordionBars.find(".accordion__bar__inner__icon")
       .removeClass("accordion__bar__inner__icon--active");
@@ -28,8 +27,7 @@ function accordion() {
       var $loadingContent = $targetContentElement.find(".js-contentLoading");
       var $textContent = $targetContentElement.find(".js-content");
 
-      $(this).find(".accordion__bar__inner")
-        .addClass("accordion__bar__inner--active");
+      $(this).addClass("accordion__bar__inner--active");
 
       $(this).find(".accordion__bar__inner__icon")
         .addClass("accordion__bar__inner__icon--active");
@@ -49,12 +47,12 @@ function accordion() {
         .hide()
         .load(url, function(){
           $loadingContent.fadeOut("slow");
-          $targetContentElement.css({
-            "max-height": "500px",
-            "transition": "max-height 1.5s ease-in"
-          });
-          $textContent.delay("slow").fadeIn("slow");
         });
+        $targetContentElement.css({
+          "max-height": "700px",
+          "transition": "max-height 1.5s ease-in"
+        });
+        $textContent.delay("slow").fadeIn("slow");
     }
 
   });
