@@ -31,6 +31,9 @@
   border-top: none;
   border-radius: 0 0 2px 2px;
   margin: 0 2px 2px 2px;
+  max-height: 0;
+  transition: max-height 0.15s ease-out;
+  overflow: hidden;
 }
 .accordion__bar__inner__icon, .accordion__bar__inner__icon--active {
   float: right;
@@ -38,6 +41,11 @@
   position: relative;
   top: -3px;
 }
+.accordion__bar__inner__icon {
+  transition: transform 0.5s ease-in;
+  transform: rotate(0deg);
+}
 .accordion__bar__inner__icon--active {
-  transform: rotate(180deg);
+  transition: transform 0.5s ease-in;
+  transform:  rotate(180deg);
 }
